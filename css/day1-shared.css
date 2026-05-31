@@ -1,0 +1,140 @@
+/* Shared styles for Day 1 examples.
+   These styles intentionally keep the UI plain so the code remains the focus. */
+
+:root {
+  --page-max-width: 70rem;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --border: #555;
+  --surface: #f7f7f7;
+  --surface-strong: #e9e9e9;
+  --text: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+header,
+main,
+footer {
+  max-width: var(--page-max-width);
+  margin-inline: auto;
+  padding: var(--space-3);
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-4);
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-left: 0;
+  list-style: none;
+}
+
+section {
+  margin-block: var(--space-4);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.65rem 1rem;
+  border: 2px solid #111;
+  background: white;
+}
+
+button:hover {
+  background: var(--surface-strong);
+}
+
+/* Strong visible focus for training.
+   In production, this can be styled more elegantly, but it must remain visible. */
+a:focus,
+button:focus,
+[tabindex]:focus {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: -4rem;
+  z-index: 1000;
+  padding: var(--space-1) var(--space-2);
+  background: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.card {
+  border: 1px solid var(--border);
+  padding: var(--space-3);
+  background: var(--surface);
+  margin-block: var(--space-2);
+}
+
+.example-grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 48rem) {
+  .example-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.status {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.warning {
+  border-left: 0.4rem solid #111;
+  padding-left: var(--space-2);
+}
+
+.todo {
+  border: 2px dashed #777;
+  padding: var(--space-2);
+  background: #fafafa;
+}

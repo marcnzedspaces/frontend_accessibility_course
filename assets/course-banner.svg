@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title id="title">Accessible web interface illustration</title>
+  <desc id="desc">A simple illustration of a laptop displaying accessible interface elements, including headings, buttons, and navigation.</desc>
+  <rect width="900" height="360" fill="#f2f2f2"/>
+  <rect x="180" y="70" width="540" height="300" rx="24" fill="#222"/>
+  <rect x="210" y="100" width="480" height="220" fill="#fff"/>
+  <rect x="240" y="130" width="190" height="28" fill="#111"/>
+  <rect x="240" y="180" width="360" height="18" fill="#777"/>
+  <rect x="240" y="215" width="320" height="18" fill="#777"/>
+  <rect x="240" y="260" width="150" height="42" rx="8" fill="#ddd" stroke="#111" stroke-width="4"/>
+  <circle cx="635" cy="141" r="28" fill="#ddd" stroke="#111" stroke-width="4"/>
+  <path d="M628 140 l8 8 l16 -20" fill="none" stroke="#111" stroke-width="6"/>
+</svg>
