@@ -22,7 +22,7 @@ To test a simple ARIA disclosure pattern and understand how ARIA communicates st
 
 ## Instructions
 
-Open `05-aria-lite-disclosure.html` in the browser.
+Open `05-aria.html` in the browser.
 
 Test the disclosure button using keyboard navigation and NVDA or JAWS.
 
