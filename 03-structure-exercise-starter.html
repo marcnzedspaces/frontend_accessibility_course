@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exercise</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    .large {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .medium {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 24px;
+    }
+
+    .fake-nav span {
+      color: blue;
+      text-decoration: underline;
+      margin-right: 16px;
+      cursor: pointer;
+    }
+
+    .fake-button {
+      display: inline-block;
+      background: #222;
+      color: white;
+      padding: 10px 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- EXERCISE:
+       Fix this page using semantic HTML.
+       Keep the same content, but improve the structure. -->
+
+  <div class="fake-nav">
+    <span onclick="location.href='#overview'">Overview</span>
+    <span onclick="location.href='#schedule'">Schedule</span>
+    <span onclick="location.href='#register'">Register</span>
+  </div>
+
+  <div class="large">Frontend Accessibility Course</div>
+
+  <div id="overview">
+    <div class="medium">Overview</div>
+    <p>
+      This course introduces practical frontend accessibility foundations.
+      <a href="#schedule">Click here</a>
+    </p>
+  </div>
+
+  <div id="schedule">
+    <div class="medium">Schedule</div>
+    <div>Day 1: Semantic HTML</div>
+    <div>Day 2: Forms and validation</div>
+  </div>
+
+  <div id="register">
+    <div class="medium">Register</div>
+    <p>Use the control below to register.</p>
+
+    <div class="fake-button" onclick="alert('Registration started')">
+      Start registration
+    </div>
+  </div>
+</body>
+</html>
