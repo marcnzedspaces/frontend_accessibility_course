@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARIA-Lite Disclosure Example</title>
+  <link rel="stylesheet" href="css/day1-shared.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <h1>ARIA-Lite Disclosure Example</h1>
+  </header>
+
+  <main id="main-content">
+    <section aria-labelledby="purpose-heading">
+      <h2 id="purpose-heading">Purpose</h2>
+      <p>
+        This example shows how to use a native button with
+        <code>aria-expanded</code>, <code>aria-controls</code>, and
+        <code>hidden</code>.
+      </p>
+
+      <p class="warning">
+        The button is native HTML. ARIA only communicates the expanded or collapsed state.
+      </p>
+    </section>
+
+    <section aria-labelledby="example-heading">
+      <h2 id="example-heading">Example</h2>
+
+      <button
+        type="button"
+        id="details-button"
+        aria-expanded="false"
+        aria-controls="course-details">
+        Show course details
+      </button>
+
+      <div id="course-details" hidden class="card">
+        <h3>Course details</h3>
+        <p>
+          Day 1 covers WCAG thinking, semantic HTML, landmarks, headings,
+          native controls, skip links, and ARIA-lite.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="testing-heading">
+      <h2 id="testing-heading">Testing questions</h2>
+      <ul>
+        <li>Can the button be reached with Tab?</li>
+        <li>Can it be activated with Enter and Space?</li>
+        <li>Does the screen reader announce expanded or collapsed state?</li>
+        <li>Is the hidden content skipped when collapsed?</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="scripts/disclosure.js"></script>
+</body>
+</html>
