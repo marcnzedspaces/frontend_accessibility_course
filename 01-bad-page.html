@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    .top {
+      background: #eeeeee;
+      padding: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .menu {
+      margin-top: 16px;
+    }
+
+    .menu span {
+      margin-right: 20px;
+      color: blue;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .big-title {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .fake-button {
+      background: #333333;
+      color: white;
+      padding: 10px 20px;
+      display: inline-block;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .fake-button:focus {
+      outline: none;
+    }
+
+    .hidden-problem {
+      color: #777777;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- INTENTIONALLY BAD EXAMPLE:
+       This file is designed for audit practice.
+       Do not treat this as recommended code. -->
+
+  <div class="top">
+    <div class="logo">Training Website</div>
+
+    <div class="menu">
+      <span onclick="location.href='#home'">Home</span>
+      <span onclick="location.href='#courses'">Courses</span>
+      <span onclick="location.href='#contact'">Contact</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="big-title">Frontend Accessibility Course</div>
+
+    <div class="section-title">About this course</div>
+    <p>
+      This course teaches frontend accessibility.
+      <span onclick="location.href='#details'">Click here</span>
+      to learn more.
+    </p>
+
+    <!-- Missing alt text. This is intentional for the exercise. -->
+    <img src="assets/course-banner.svg">
+
+    <div class="section-title">Registration</div>
+    <p class="hidden-problem">
+      Use the control below to register your interest.
+    </p>
+
+    <!-- This looks like a button, but it is not a real button. -->
+    <div class="fake-button" onclick="alert('Registered')">
+      Register
+    </div>
+  </div>
+</body>
+</html>
