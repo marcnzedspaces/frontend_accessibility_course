@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Native Controls vs Fake Controls</title>
+  <link rel="stylesheet" href="css/day1-shared.css">
+
+  <style>
+    .fake-button,
+    .fake-link {
+      display: inline-block;
+      margin-block: 0.5rem;
+    }
+
+    .fake-button {
+      padding: 0.65rem 1rem;
+      background: #222;
+      color: white;
+      cursor: pointer;
+    }
+
+    .fake-link {
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .bad-focus:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <h1>Native Controls vs Fake Controls</h1>
+  </header>
+
+  <main id="main-content">
+    <section aria-labelledby="activity-heading">
+      <h2 id="activity-heading">Activity</h2>
+      <p>
+        Test each example using Tab, Shift + Tab, Enter, Space, NVDA, or JAWS.
+        Notice what is focusable, what is announced correctly, and what can be activated.
+      </p>
+    </section>
+
+    <div class="example-grid">
+      <section class="card" aria-labelledby="bad-button-heading">
+        <h2 id="bad-button-heading">Bad example: fake button</h2>
+
+        <p>
+          This looks like a button, but it is a <code>div</code>.
+          It does not provide native button behavior.
+        </p>
+
+        <div class="fake-button bad-focus" onclick="showStatus('Bad fake button was clicked.')">
+          Save preferences
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="good-button-heading">
+        <h2 id="good-button-heading">Good example: native button</h2>
+
+        <p>
+          This is a real button. It has built-in role, focus, and keyboard behavior.
+        </p>
+
+        <button type="button" onclick="showStatus('Good native button was activated.')">
+          Save preferences
+        </button>
+      </section>
+
+      <section class="card" aria-labelledby="bad-link-heading">
+        <h2 id="bad-link-heading">Bad example: fake link</h2>
+
+        <p>
+          This looks like a link, but it is a <code>span</code> with JavaScript.
+        </p>
+
+        <span class="fake-link" onclick="showStatus('Bad fake link was clicked.')">
+          View course details
+        </span>
+      </section>
+
+      <section class="card" aria-labelledby="good-link-heading">
+        <h2 id="good-link-heading">Good example: native link</h2>
+
+        <p>
+          This is a real link. It has an <code>href</code> and can be used as expected.
+        </p>
+
+        <a href="#course-details">View course details</a>
+      </section>
+    </div>
+
+    <section id="course-details" aria-labelledby="course-details-heading">
+      <h2 id="course-details-heading">Course details</h2>
+      <p>
+        This section exists so the real link has a real destination.
+      </p>
+    </section>
+
+    <div class="status" id="status" role="status" aria-live="polite">
+      No action yet.
+    </div>
+  </main>
+
+  <script>
+    function showStatus(message) {
+      document.getElementById("status").textContent = message;
+    }
+  </script>
+</body>
+</html>
