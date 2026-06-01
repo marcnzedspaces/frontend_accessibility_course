@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Frontend Accessibility Course Structure Exercise</title>
+  <link rel="stylesheet" href="css/day1-shared.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Course page navigation">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h1>Frontend Accessibility Course</h1>
+
+    <section id="overview" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Overview</h2>
+      <p>
+        This course introduces practical frontend accessibility foundations.
+        <a href="#schedule">View the course schedule</a>
+      </p>
+    </section>
+
+    <section id="schedule" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading">Schedule</h2>
+      <ul>
+        <li>Day 1: Semantic HTML</li>
+        <li>Day 2: Forms and validation</li>
+      </ul>
+    </section>
+
+    <section id="register" aria-labelledby="register-heading">
+      <h2 id="register-heading">Register</h2>
+      <p>Use the control below to register.</p>
+
+      <button type="button" onclick="alert('Registration started')">
+        Start registration
+      </button>
+    </section>
+  </main>
+</body>
+</html>
