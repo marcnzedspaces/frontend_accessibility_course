@@ -1,0 +1,23 @@
+<div class="field">
+  <label [attr.for]="id">
+    {{ label }}
+    <span *ngIf="required" aria-hidden="true"> *</span>
+  </label>
+
+  <p *ngIf="helpText" [id]="helpId" class="hint">
+    {{ helpText }}
+  </p>
+
+  <input
+    [id]="id"
+    [name]="id"
+    [type]="type"
+    [required]="required"
+    [attr.autocomplete]="autocomplete"
+    [attr.aria-invalid]="error ? 'true' : null"
+    [attr.aria-describedby]="describedBy">
+
+  <p *ngIf="error" [id]="errorId" class="error">
+    {{ error }}
+  </p>
+</div>
