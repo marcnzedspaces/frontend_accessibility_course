@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validation and Error Summary Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Validation and Error Summary Demo</h1>
+
+    <p>Submit the form empty to trigger the custom error summary.</p>
+
+    <div id="error-summary" class="error-summary" role="alert" aria-labelledby="error-summary-title" tabindex="-1" hidden>
+      <h2 id="error-summary-title">There is a problem</h2>
+      <ul id="error-list"></ul>
+    </div>
+
+    <form id="registration-form" novalidate>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email">
+        <p id="email-error" class="error" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password">
+        <p id="password-error" class="error" hidden></p>
+      </div>
+
+      <button type="submit">Sign in</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById("registration-form");
+    const summary = document.getElementById("error-summary");
+    const errorList = document.getElementById("error-list");
+
+    const fields = [
+      {
+        id: "email",
+        errorId: "email-error",
+        validate(input) {
+          if (!input.value.trim()) {
+            return "Enter your email address.";
+          }
+
+          if (!input.value.includes("@")) {
+            return "Enter an email address in the format name@example.com.";
+          }
+
+          return "";
+        }
+      },
+      {
+        id: "password",
+        errorId: "password-error",
+        validate(input) {
+          if (!input.value.trim()) {
+            return "Enter your password.";
+          }
+
+          return "";
+        }
+      }
+    ];
+
+    function clearErrors() {
+      summary.hidden = true;
+      errorList.innerHTML = "";
+
+      fields.forEach(({ id, errorId }) => {
+        const input = document.getElementById(id);
+        const error = document.getElementById(errorId);
+
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+        error.hidden = true;
+        error.textContent = "";
+      });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      clearErrors();
+
+      const errors = [];
+
+      fields.forEach(({ id, errorId, validate }) => {
+        const input = document.getElementById(id);
+        const error = validate(input);
+
+        if (error) {
+          errors.push({ id, errorId, message: error });
+
+          const errorElement = document.getElementById(errorId);
+          errorElement.textContent = error;
+          errorElement.hidden = false;
+
+          input.setAttribute("aria-invalid", "true");
+          input.setAttribute("aria-describedby", errorId);
+        }
+      });
+
+      if (errors.length > 0) {
+        errors.forEach(({ id, message }) => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+
+          link.href = `#${id}`;
+          link.textContent = message;
+
+          li.appendChild(link);
+          errorList.appendChild(li);
+        });
+
+        summary.hidden = false;
+        summary.focus();
+        return;
+      }
+
+      alert("Form submitted successfully.");
+    });
+  </script>
+</body>
+</html>
