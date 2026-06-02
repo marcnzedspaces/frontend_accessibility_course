@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessible Registration Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Accessible Registration Form</h1>
+
+    <p class="required-note">
+      Fields marked with <span aria-hidden="true">*</span> are required.
+    </p>
+
+    <form>
+      <div class="field">
+        <label for="full-name">
+          Full name <span aria-hidden="true">*</span>
+        </label>
+        <input
+          id="full-name"
+          name="fullName"
+          type="text"
+          autocomplete="name"
+          required>
+      </div>
+
+      <div class="field">
+        <label for="email">
+          Email address <span aria-hidden="true">*</span>
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone number</label>
+        <p id="phone-help" class="hint">
+          Include country code if outside Malaysia.
+        </p>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          aria-describedby="phone-help">
+      </div>
+
+      <div class="field">
+        <label for="password">
+          Password <span aria-hidden="true">*</span>
+        </label>
+        <p id="password-help" class="hint">
+          Use at least 12 characters.
+        </p>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          required
+          aria-describedby="password-help">
+      </div>
+
+      <fieldset>
+        <legend>
+          Preferred contact method <span aria-hidden="true">*</span>
+        </legend>
+
+        <label>
+          <input type="radio" name="contact" value="email" required>
+          Email
+        </label>
+
+        <br>
+
+        <label>
+          <input type="radio" name="contact" value="phone">
+          Phone
+        </label>
+      </fieldset>
+
+      <div class="field">
+        <label>
+          <input id="terms" name="terms" type="checkbox" required>
+          I agree to the terms and conditions
+        </label>
+      </div>
+
+      <button type="submit">Submit registration</button>
+    </form>
+  </main>
+</body>
+</html>
