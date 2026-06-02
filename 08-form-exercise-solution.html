@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - Accessible Version</title>
+    <link rel="stylesheet" href="css/day1-shared.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .required-indicator {
+            color: #c00;
+            font-weight: bold;
+            margin-left: 0.25rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: 3px solid #0066cc;
+            outline-offset: 2px;
+            border-color: #0066cc;
+        }
+
+        .form-hint {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .error-message {
+            color: #c00;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:focus {
+            outline: 3px solid #0066cc;
+            outline-offset: 2px;
+        }
+
+        button:hover {
+            background: #0052a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you. Please fill out this form and we'll get back to you shortly.</p>
+
+        <form>
+            <!-- Name field with proper label -->
+            <div class="form-group">
+                <label for="name">
+                    Name
+                    <span class="required-indicator" aria-label="required">*</span>
+                </label>
+                <input type="text" id="name" name="name" required aria-required="true">
+            </div>
+
+            <!-- Email field with proper label -->
+            <div class="form-group">
+                <label for="email">
+                    Email
+                    <span class="required-indicator" aria-label="required">*</span>
+                </label>
+                <input type="email" id="email" name="email" required aria-required="true">
+            </div>
+
+            <!-- Message field with proper label -->
+            <div class="form-group">
+                <label for="message">
+                    Message
+                    <span class="required-indicator" aria-label="required">*</span>
+                </label>
+                <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+            </div>
+
+            <!-- Phone field with associated hint -->
+            <div class="form-group">
+                <label for="phone">Phone (optional)</label>
+                <div class="form-hint">Format: (123) 456-7890</div>
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone"
+                    aria-describedby="phone-hint"
+                    placeholder="(123) 456-7890">
+                <div id="phone-hint" class="form-hint">Include parentheses and dashes</div>
+            </div>
+
+            <!-- Topic dropdown field with proper label -->
+            <div class="form-group">
+                <label for="topic">
+                    Topic
+                    <span class="required-indicator" aria-label="required">*</span>
+                </label>
+                <select id="topic" name="topic" required aria-required="true">
+                    <option value="">-- Select a topic --</option>
+                    <option value="support">Support</option>
+                    <option value="sales">Sales Inquiry</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Company field with proper label and required attribute -->
+            <div class="form-group">
+                <label for="company">
+                    Company
+                    <span class="required-indicator" aria-label="required">*</span>
+                </label>
+                <input type="text" id="company" name="company" required aria-required="true">
+            </div>
+
+            <!-- Checkbox with proper label -->
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">I agree to the terms and privacy policy</label>
+                </div>
+            </div>
+
+            <!-- Submit button with descriptive text -->
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>

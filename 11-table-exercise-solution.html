@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Data Table - Accessible Version</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .table-description {
+            margin: 1rem 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        caption {
+            caption-side: top;
+            text-align: left;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        thead {
+            background: #0066cc;
+            color: white;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #0052a3;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        /* Numeric data right-aligned -->
+        td:nth-child(n+2) {
+            text-align: right;
+        }
+
+        th:nth-child(n+2) {
+            text-align: right;
+        }
+
+        tbody tr:last-child {
+            background: #f0f0f0;
+            font-weight: bold;
+            border-top: 2px solid #ccc;
+        }
+
+        tbody tr:last-child td {
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Performance</h1>
+
+        <p class="table-description">
+            The following table shows quarterly sales data by product category for the fiscal year.
+        </p>
+
+        <!-- Proper, accessible table structure -->
+        <table>
+            <caption>Quarterly Sales Data by Product Category</caption>
+            
+            <thead>
+                <tr>
+                    <th scope="col">Product Category</th>
+                    <th scope="col">Q1 Sales</th>
+                    <th scope="col">Q2 Sales</th>
+                    <th scope="col">Q3 Sales</th>
+                    <th scope="col">Q4 Sales</th>
+                    <th scope="col">Annual Total</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th scope="row">Laptops</th>
+                    <td>$25,000</td>
+                    <td>$32,000</td>
+                    <td>$28,000</td>
+                    <td>$45,000</td>
+                    <td>$130,000</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Tablets</th>
+                    <td>$15,000</td>
+                    <td>$18,000</td>
+                    <td>$21,000</td>
+                    <td>$19,000</td>
+                    <td>$73,000</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Phones</th>
+                    <td>$35,000</td>
+                    <td>$42,000</td>
+                    <td>$39,000</td>
+                    <td>$51,000</td>
+                    <td>$167,000</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Accessories</th>
+                    <td>$8,000</td>
+                    <td>$12,000</td>
+                    <td>$11,000</td>
+                    <td>$15,000</td>
+                    <td>$46,000</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Services</th>
+                    <td>$5,000</td>
+                    <td>$7,000</td>
+                    <td>$9,000</td>
+                    <td>$12,000</td>
+                    <td>$33,000</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">TOTAL</th>
+                    <td>$88,000</td>
+                    <td>$111,000</td>
+                    <td>$108,000</td>
+                    <td>$142,000</td>
+                    <td>$449,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The table uses proper semantic HTML markup including:</p>
+        <ul>
+            <li><code>&lt;caption&gt;</code> to describe the table's purpose</li>
+            <li><code>&lt;thead&gt;</code> for the header row</li>
+            <li><code>&lt;tbody&gt;</code> for data rows</li>
+            <li><code>&lt;th scope="col"&gt;</code> for column headers</li>
+            <li><code>&lt;th scope="row"&gt;</code> for row headers</li>
+            <li>Clear semantic structure for screen readers</li>
+        </ul>
+    </div>
+</body>
+</html>

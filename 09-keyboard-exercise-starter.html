@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation and Focus - Inaccessible Version</title>
+    <link rel="stylesheet" href="css/day1-shared.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Skip link - hidden and not keyboard accessible -->
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            z-index: -1;
+        }
+
+        /* Navigation - keyboard inaccessible -->
+        nav {
+            background: #333;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Dropdown menu - hidden, no keyboard support -->
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #444;
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Only shows on hover - no keyboard support -->
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Modal is hidden -->
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+        }
+
+        /* Button that triggers modal -->
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* No focus styles on button -->
+        button:focus {
+            outline: none;
+        }
+
+        .close-button {
+            background: #ccc;
+            color: #333;
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .content-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .content-section h2 {
+            margin-top: 0;
+        }
+
+        /* Hidden content - not reachable by keyboard -->
+        .hidden-content {
+            display: none;
+        }
+
+        /* Tab component -->
+        .tabs {
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+        }
+
+        .tab-button.active {
+            border-bottom-color: #0066cc;
+            color: #0066cc;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link not properly styled for keyboard -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation with keyboard and focus problems -->
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            
+            <!-- Dropdown menu - only accessible with mouse hover -->
+            <li class="dropdown">
+                <a onclick="toggleMenu(event)">Services</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/services/consulting">Consulting</a></li>
+                    <li><a href="/services/training">Training</a></li>
+                    <li><a href="/services/support">Support</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Keyboard Navigation Test Page</h1>
+
+        <!-- Tab component - no keyboard support -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab(0)">Tab 1</button>
+            <button class="tab-button" onclick="showTab(1)">Tab 2</button>
+            <button class="tab-button" onclick="showTab(2)">Tab 3</button>
+        </div>
+
+        <div class="tab-content active">
+            <p>This is the first tab content. Use the Tab key to navigate.</p>
+        </div>
+        <div class="tab-content">
+            <p>This is the second tab content.</p>
+        </div>
+        <div class="tab-content">
+            <p>This is the third tab content.</p>
+        </div>
+
+        <!-- Content sections -->
+        <section class="content-section">
+            <h2>First Section</h2>
+            <p>This is some content. Try pressing Tab to navigate.</p>
+            <button onclick="openModal()">Open Modal</button>
+        </section>
+
+        <!-- Hidden content that still receives keyboard focus -->
+        <section class="content-section hidden-content">
+            <h2>Hidden Section</h2>
+            <p>This section is hidden but you can still Tab to it.</p>
+            <a href="#">Hidden Link 1</a>
+            <a href="#">Hidden Link 2</a>
+        </section>
+
+        <section class="content-section">
+            <h2>Second Section</h2>
+            <p>More content here to test Tab order.</p>
+            <a href="/page1">Link 1</a>
+            <a href="/page2">Link 2</a>
+        </section>
+    </main>
+
+    <!-- Modal without focus management -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">×</button>
+            <h2>Modal Title</h2>
+            <p>This is a modal dialog. Press Escape or click the X to close.</p>
+            <input type="text" placeholder="Type something">
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu(event) {
+            event.preventDefault();
+            // Menu only shows on hover, not on keyboard
+        }
+
+        function showTab(index) {
+            // Hide all tabs
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
+            contents[index].classList.add('active');
+            buttons[index].classList.add('active');
+        }
+
+        function openModal() {
+            document.getElementById('modal').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('open');
+        }
+
+        // Escape to close modal - but focus isn't trapped
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

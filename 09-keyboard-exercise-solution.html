@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation and Focus - Accessible Version</title>
+    <link rel="stylesheet" href="css/day1-shared.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Skip link - visible on focus -->
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Navigation -->
+        nav {
+            background: #333;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+        }
+
+        nav a:focus {
+            outline: 3px solid #ffff00;
+            outline-offset: 2px;
+        }
+
+        /* Dropdown menu - keyboard accessible -->
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-trigger {
+            position: relative;
+        }
+
+        .dropdown-trigger::after {
+            content: " ▼";
+            font-size: 0.75em;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #444;
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+            min-width: 200px;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a:focus {
+            background: #555;
+            outline: none;
+        }
+
+        .dropdown-menu.open {
+            display: block;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Modal -->
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .modal-title {
+            margin-top: 0;
+        }
+
+        /* Buttons -->
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:focus {
+            outline: 3px solid #0066cc;
+            outline-offset: 2px;
+        }
+
+        button:hover {
+            background: #0052a3;
+        }
+
+        .close-button {
+            background: #ccc;
+            color: #333;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .content-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .content-section h2 {
+            margin-top: 0;
+        }
+
+        /* Tab component - keyboard accessible -->
+        .tabs {
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            color: #333;
+            position: relative;
+        }
+
+        .tab-button:focus {
+            outline: 3px solid #0066cc;
+            outline-offset: -3px;
+        }
+
+        .tab-button.active {
+            border-bottom-color: #0066cc;
+            color: #0066cc;
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Ensure hidden content is not keyboard accessible -->
+        [aria-hidden="true"] {
+            pointer-events: none;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link - visible on focus -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Accessible navigation -->
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="/">Home</a></li>
+            
+            <!-- Dropdown menu - keyboard accessible -->
+            <li class="dropdown">
+                <button class="dropdown-trigger" id="services-btn" aria-haspopup="true" aria-expanded="false">
+                    Services
+                </button>
+                <ul class="dropdown-menu" id="services-menu" aria-labelledby="services-btn">
+                    <li><a href="/services/consulting">Consulting</a></li>
+                    <li><a href="/services/training">Training</a></li>
+                    <li><a href="/services/support">Support</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+        <h1>Keyboard Navigation Test Page</h1>
+
+        <!-- Tab component - keyboard accessible -->
+        <div role="tablist" aria-label="Content tabs" class="tabs">
+            <button role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1" class="tab-button active">
+                Tab 1
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2" class="tab-button">
+                Tab 2
+            </button>
+            <button role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3" class="tab-button">
+                Tab 3
+            </button>
+        </div>
+
+        <div role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1" class="tab-content active">
+            <p>This is the first tab content. Use the Tab key or arrow keys to navigate tabs.</p>
+        </div>
+        <div role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" class="tab-content">
+            <p>This is the second tab content.</p>
+        </div>
+        <div role="tabpanel" id="tab-panel-3" aria-labelledby="tab-3" class="tab-content">
+            <p>This is the third tab content.</p>
+        </div>
+
+        <!-- Content sections -->
+        <section class="content-section">
+            <h2>First Section</h2>
+            <p>This is some content. Try pressing Tab to navigate.</p>
+            <button onclick="openModal()">Open Modal</button>
+        </section>
+
+        <section class="content-section">
+            <h2>Second Section</h2>
+            <p>More content here to test Tab order.</p>
+            <a href="/page1">Link 1</a>
+            <a href="/page2">Link 2</a>
+        </section>
+    </main>
+
+    <!-- Modal with focus management -->
+    <div id="modal" class="modal" role="alertdialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <button class="close-button" aria-label="Close modal" id="modal-close">×</button>
+            <h2 id="modal-title" class="modal-title">Modal Title</h2>
+            <p>This is a modal dialog. Press Escape or click the X to close.</p>
+            <input type="text" placeholder="Type something">
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Dropdown menu keyboard support
+        const servicesBtn = document.getElementById('services-btn');
+        const servicesMenu = document.getElementById('services-menu');
+
+        servicesBtn.addEventListener('click', () => {
+            const isOpen = servicesMenu.classList.contains('open');
+            servicesMenu.classList.toggle('open');
+            servicesBtn.setAttribute('aria-expanded', !isOpen);
+        });
+
+        servicesBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'Enter') {
+                e.preventDefault();
+                servicesMenu.classList.add('open');
+                servicesBtn.setAttribute('aria-expanded', true);
+                servicesMenu.querySelector('a').focus();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                servicesMenu.classList.remove('open');
+                servicesBtn.setAttribute('aria-expanded', false);
+            }
+        });
+
+        // Tab component with keyboard support
+        const tabButtons = document.querySelectorAll('[role="tab"]');
+        const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+        tabButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => showTab(index));
+            
+            btn.addEventListener('keydown', (e) => {
+                let newIndex = index;
+                if (e.key === 'ArrowLeft') {
+                    newIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+                } else if (e.key === 'ArrowRight') {
+                    newIndex = (index + 1) % tabButtons.length;
+                } else if (e.key === 'Home') {
+                    newIndex = 0;
+                } else if (e.key === 'End') {
+                    newIndex = tabButtons.length - 1;
+                } else {
+                    return;
+                }
+                e.preventDefault();
+                showTab(newIndex);
+                tabButtons[newIndex].focus();
+            });
+        });
+
+        function showTab(index) {
+            tabButtons.forEach((btn, i) => {
+                btn.setAttribute('aria-selected', i === index);
+                btn.classList.toggle('active', i === index);
+            });
+            tabPanels.forEach((panel, i) => {
+                panel.classList.toggle('active', i === index);
+            });
+        }
+
+        // Modal focus management
+        const modal = document.getElementById('modal');
+        const modalCloseBtn = document.getElementById('modal-close');
+        let lastFocusedElement = null;
+
+        function openModal() {
+            lastFocusedElement = document.activeElement;
+            modal.classList.add('open');
+            modalCloseBtn.focus();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
+        }
+
+        modalCloseBtn.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+        // Trap focus inside modal when open
+        document.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('open') && e.key === 'Tab') {
+                const focusableElements = modal.querySelectorAll(
+                    'button, [href], input, select, textarea'
+                );
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

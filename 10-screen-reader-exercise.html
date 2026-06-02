@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Screen Reader Testing</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+
+        div.header {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        div.navigation {
+            background: #333;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        div.navigation a {
+            color: white;
+            margin-right: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .blog-post {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .post-title {
+            color: #0066cc;
+            cursor: pointer;
+        }
+
+        .post-meta {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="assets/logo.png" alt="logo">
+        <h1>My Blog</h1>
+    </div>
+
+    <div class="navigation">
+        <a onclick="goHome()">Home</a>
+        <a onclick="goAbout()">About</a>
+        <a onclick="goContact()">Contact</a>
+        <a onclick="goArchive()">Archive</a>
+    </div>
+
+    <div style="display: flex; gap: 2rem;">
+        <div style="flex: 1;">
+            <div class="blog-post">
+                <h1 class="post-title">First Blog Post</h1>
+                <div class="post-meta">Posted on June 1, 2026 by John Doe</div>
+                
+                <p>This is the first blog post. It has some content about accessibility.</p>
+                
+                <img src="assets/image1.jpg">
+                
+                <p>Here's more content below the image. There's also a chart:</p>
+                
+                <img src="assets/chart.png">
+                
+                <p>And here's the conclusion of the post.</p>
+                
+                <button onclick="alert('Comment submitted')">Add Comment</button>
+            </div>
+
+            <div class="blog-post">
+                <h2 class="post-title">Second Blog Post</h2>
+                <div class="post-meta">Posted on May 28, 2026 by Jane Smith</div>
+                
+                <p>This is the second blog post with more information.</p>
+                
+                <p><a onclick="showMore()">Read more...</a></p>
+            </div>
+
+            <div class="blog-post">
+                <h2 class="post-title">Third Blog Post</h2>
+                <div class="post-meta">Posted on May 25, 2026</div>
+                
+                <p>Another blog post for testing purposes.</p>
+            </div>
+        </div>
+
+        <div style="width: 200px;">
+            <div class="sidebar">
+                <div class="sidebar-title">Search</div>
+                <input type="text" placeholder="Search...">
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-title">Categories</div>
+                <a onclick="goCategory('tech')">Technology</a><br>
+                <a onclick="goCategory('design')">Design</a><br>
+                <a onclick="goCategory('tips')">Tips</a>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-title">Recent Posts</div>
+                <a onclick="goPost(1)">First Post</a><br>
+                <a onclick="goPost(2)">Second Post</a><br>
+                <a onclick="goPost(3)">Third Post</a>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-title">Archives</div>
+                <a onclick="goArchive('2026-06')">June 2026</a><br>
+                <a onclick="goArchive('2026-05')">May 2026</a><br>
+                <a onclick="goArchive('2026-04')">April 2026</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goHome() { console.log('Go home'); }
+        function goAbout() { console.log('Go about'); }
+        function goContact() { console.log('Go contact'); }
+        function goArchive() { console.log('Go archive'); }
+        function showMore() { console.log('Show more'); }
+        function goCategory(cat) { console.log('Category: ' + cat); }
+        function goPost(num) { console.log('Post: ' + num); }
+    </script>
+</body>
+</html>

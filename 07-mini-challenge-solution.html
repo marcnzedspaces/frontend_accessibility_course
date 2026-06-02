@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessible Course Landing Page | Day 1 Mini Challenge</title>
+  <link rel="stylesheet" href="css/day1-shared.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <p>Marc & Zed Training</p>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#outcomes">Learning outcomes</a></li>
+        <li><a href="#details">Course details</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h1>Frontend Accessibility Foundations</h1>
+
+    <section id="overview" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">Course overview</h2>
+      <p>
+        This one-day foundation introduces semantic HTML, keyboard accessibility,
+        landmarks, headings, native controls, and light ARIA.
+      </p>
+
+      <img
+        src="assets/course-banner.svg"
+        alt="Illustration of a laptop displaying accessible interface elements">
+
+      <p>
+        <a href="#outcomes">
+          View frontend accessibility learning outcomes
+        </a>
+      </p>
+    </section>
+
+    <section id="outcomes" aria-labelledby="outcomes-heading">
+      <h2 id="outcomes-heading">Learning outcomes</h2>
+      <ul>
+        <li>Use semantic HTML for accessible page structure.</li>
+        <li>Differentiate between links and buttons.</li>
+        <li>Test basic keyboard navigation and focus order.</li>
+        <li>Use ARIA only when it adds useful meaning.</li>
+      </ul>
+
+      <!-- Decorative image: empty alt text removes it from the screen reader experience. -->
+      <img src="assets/decorative-pattern.svg" alt="">
+    </section>
+
+    <section id="details" aria-labelledby="details-heading">
+      <h2 id="details-heading">Course details</h2>
+
+      <button
+        type="button"
+        id="details-button"
+        aria-expanded="false"
+        aria-controls="course-details">
+        Show course details
+      </button>
+
+      <div id="course-details" hidden class="card">
+        <h3>Day 1 topics</h3>
+        <ul>
+          <li>WCAG thinking for frontend developers</li>
+          <li>Semantic HTML and page structure</li>
+          <li>Landmarks, headings, and skip links</li>
+          <li>Native controls versus fake controls</li>
+          <li>ARIA-lite patterns</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="register" aria-labelledby="register-heading">
+      <h2 id="register-heading">Register interest</h2>
+      <p>
+        Use the button below to start the registration process.
+      </p>
+
+      <button type="button" onclick="alert('Registration started')">
+        Start registration
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Training provided by Marc & Zed.</p>
+  </footer>
+
+  <script src="scripts/disclosure.js"></script>
+</body>
+</html>

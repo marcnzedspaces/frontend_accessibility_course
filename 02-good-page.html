@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Frontend Accessibility Course | Training Website</title>
+  <link rel="stylesheet" href="css/day1-shared.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <p>Training Website</p>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h1>Frontend Accessibility Course</h1>
+
+    <section id="overview" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">About this course</h2>
+      <p>
+        This course teaches semantic HTML, keyboard accessibility,
+        ARIA basics, and screen reader-friendly frontend patterns.
+      </p>
+
+      <p>
+        <a href="#details">
+          View frontend accessibility course details
+        </a>
+      </p>
+
+      <img
+        src="assets/course-banner.svg"
+        alt="Illustration of a laptop showing accessible web interface elements">
+    </section>
+
+    <section id="details" aria-labelledby="details-heading">
+      <h2 id="details-heading">Course details</h2>
+      <p>
+        Day 1 focuses on WCAG thinking, semantic HTML, landmarks,
+        headings, native controls, and ARIA-lite.
+      </p>
+
+      <button type="button" onclick="alert('Registered')">
+        Register
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Training provided by Marc & Zed.</p>
+  </footer>
+</body>
+</html>
