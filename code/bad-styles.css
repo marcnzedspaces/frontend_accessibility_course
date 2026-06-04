@@ -1,0 +1,9 @@
+body { font-family: Arial, Helvetica, sans-serif; font-size: 13px; margin: 0; color: #777; }
+main { padding: 12px; }
+button:focus, a:focus, input:focus { outline: none; }
+.fake-button { background: #999; color: #eee; padding: 8px 12px; display: inline-block; cursor: pointer; }
+.green { color: green; }
+.red { color: red; }
+.animated-card { animation: pulse 1s ease-in-out infinite; }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+.grid { display: grid; grid-template-columns: repeat(4, 240px); gap: 8px; }
