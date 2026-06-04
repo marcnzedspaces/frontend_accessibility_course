@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Monthly FFB Production Data</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<main>
+  <h1>Monthly FFB Production Data</h1>
+  <section class="summary" aria-labelledby="summary-title">
+    <h2 id="summary-title">Key insight</h2>
+    <p>Two out of three estates are below target. North Estate has the largest shortfall at 120 tonnes below target.</p>
+  </section>
+  <div class="table-wrapper" tabindex="0" aria-labelledby="ffb-table-caption">
+    <table>
+      <caption id="ffb-table-caption">Monthly FFB production by estate</caption>
+      <thead><tr><th scope="col">Estate</th><th scope="col">Target tonnes</th><th scope="col">Actual tonnes</th><th scope="col">Variance tonnes</th><th scope="col">Status</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">North Estate</th><td>1,200</td><td>1,080</td><td>-120</td><td><span class="status-bad">Below target</span></td></tr>
+        <tr><th scope="row">South Estate</th><td>980</td><td>1,015</td><td>+35</td><td><span class="status-good">Above target</span></td></tr>
+        <tr><th scope="row">West Estate</th><td>1,100</td><td>990</td><td>-110</td><td><span class="status-bad">Below target</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <button type="button" aria-label="Sort by actual tonnes, descending">Sort by actual tonnes</button>
+</main>
+</body>
+</html>
