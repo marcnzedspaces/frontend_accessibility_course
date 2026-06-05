@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Page</title><link rel="stylesheet" href="styles.css"><style>a:focus,button:focus,input:focus{outline:none}</style></head>
+<body>
+  <div class="header">
+    <span class="fake-link" onclick="location.href='#overview'">Home</span>
+    <span class="fake-link" onclick="location.href='#data'">Data</span>
+    <span class="fake-link" onclick="location.href='#contact'">Contact</span>
+  </div>
+  <div class="big-title">Accessibility Review Page</div>
+  <p>This page includes many issues from the course. Click here to learn more.</p>
+  <img src="dashboard.png">
+  <div>
+    <div class="fake-button" onclick="togglePanel()">What is included?</div>
+    <div id="panel" style="display:none;"><p>The course includes structure, forms, navigation, dialogs, data, and mobile review.</p></div>
+  </div>
+  <div id="data">
+    <div>Estate | Target | Actual | Status</div>
+    <div>North | 1200 | 1080 | <span style="color:red;">Low</span></div>
+    <div>South | 980 | 1015 | <span style="color:green;">OK</span></div>
+  </div>
+  <p>Name</p><input type="text">
+  <p>Email</p><input type="text">
+  <p id="error">Error</p>
+  <div class="fake-button" onclick="openModal()">Open modal</div>
+  <div id="modal" style="display:none;border:3px solid #000;padding:20px;">
+    <div>Modal title</div><p>This modal does not manage focus.</p><span class="fake-link" onclick="closeModal()">Close</span>
+  </div>
+  <div class="bad-motion"><p>Animated update</p></div>
+<script>
+function togglePanel(){const p=document.getElementById('panel');p.style.display=p.style.display==='none'?'block':'none'}
+function openModal(){document.getElementById('modal').style.display='block'}
+function closeModal(){document.getElementById('modal').style.display='none'}
+</script>
+</body></html>
