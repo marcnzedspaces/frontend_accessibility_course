@@ -1,0 +1,12 @@
+<!-- Accessible text field pattern -->
+<label [attr.for]="id">{{ label }}</label>
+<p *ngIf="helpText" [id]="id + '-help'">{{ helpText }}</p>
+<input [id]="id" [name]="id" [type]="type" [attr.aria-invalid]="error ? 'true' : null" [attr.aria-describedby]="describedBy">
+<p *ngIf="error" [id]="id + '-error'">{{ error }}</p>
+
+<!-- Accessible disclosure pattern -->
+<button type="button" [attr.aria-expanded]="open" [attr.aria-controls]="id + '-panel'" (click)="open = !open">{{ title }}</button>
+<div [id]="id + '-panel'" [hidden]="!open"><ng-content></ng-content></div>
+
+<!-- Current page state pattern -->
+<nav aria-label="Main navigation"><a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a><a routerLink="/courses" routerLinkActive="active" ariaCurrentWhenActive="page">Courses</a></nav>

@@ -1,0 +1,11 @@
+<!-- Broken text field -->
+<p>{{ label }}</p>
+<input [type]="type">
+<p *ngIf="error">{{ error }}</p>
+
+<!-- Broken disclosure -->
+<div (click)="open = !open">{{ title }}</div>
+<div *ngIf="open"><ng-content></ng-content></div>
+
+<!-- Broken current page state -->
+<nav><a routerLink="/home">Home</a><a routerLink="/courses">Courses</a></nav>
