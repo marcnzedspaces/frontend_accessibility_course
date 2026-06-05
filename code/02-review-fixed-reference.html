@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="description" content="Accessible review page demonstrating course concepts."><meta name="viewport" content="width=device-width, initial-scale=1"><title>Accessibility Review Page</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header><nav aria-label="Main navigation"><ul><li><a href="#overview" aria-current="page">Overview</a></li><li><a href="#data">Production data</a></li><li><a href="#contact">Contact team</a></li></ul></nav></header>
+<main id="main-content">
+<h1>Accessibility Review Page</h1>
+<section id="overview" class="summary" aria-labelledby="overview-title"><h2 id="overview-title">Overview</h2><p>This page demonstrates accessible structure, interaction, forms, data, and visual design.</p><p><a href="#data">View production data</a></p></section>
+<section aria-labelledby="image-title"><h2 id="image-title">Dashboard summary image</h2><img src="dashboard.png" alt="Dashboard summary showing estate production performance."></section>
+<section aria-labelledby="faq-title"><h2 id="faq-title">Course question</h2><button type="button" id="panel-button" aria-expanded="false" aria-controls="panel">What is included?</button><div id="panel" class="panel" hidden><p>The course includes structure, forms, navigation, dialogs, data, and mobile review.</p></div></section>
+<section id="data"><h2>Production data</h2><p>North Estate is below target. South Estate is above target.</p><div class="table-wrapper" tabindex="0"><table><caption>Estate production target and actual results</caption><thead><tr><th scope="col">Estate</th><th scope="col">Target tonnes</th><th scope="col">Actual tonnes</th><th scope="col">Status</th></tr></thead><tbody><tr><th scope="row">North Estate</th><td>1,200</td><td>1,080</td><td><span class="status-bad">Below target</span></td></tr><tr><th scope="row">South Estate</th><td>980</td><td>1,015</td><td><span class="status-good">Above target</span></td></tr></tbody></table></div></section>
+<section id="contact"><h2>Contact team</h2><form novalidate><div><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name"></div><div><label for="email">Email address</label><p id="email-help">Use the email address you check most often.</p><input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-help"></div><button type="submit">Submit request</button></form></section>
+<section><h2>Dialog example</h2><button type="button" id="open-dialog">Open dialog</button><dialog id="review-dialog" aria-labelledby="dialog-title"><h3 id="dialog-title">Review dialog</h3><p>This dialog has an accessible name and returns focus after closing.</p><button type="button" id="close-dialog">Close</button></dialog></section>
+<section class="card"><h2>Important update</h2><p>Review below-target estates before the next operations meeting.</p></section>
+</main>
+<script>
+const panelButton=document.getElementById('panel-button'),panel=document.getElementById('panel');panelButton.addEventListener('click',()=>{const e=panelButton.getAttribute('aria-expanded')==='true';panelButton.setAttribute('aria-expanded',String(!e));panel.hidden=e});
+const openDialog=document.getElementById('open-dialog'),dialog=document.getElementById('review-dialog'),closeDialog=document.getElementById('close-dialog');openDialog.addEventListener('click',()=>{dialog.showModal();closeDialog.focus()});closeDialog.addEventListener('click',()=>{dialog.close();openDialog.focus()});dialog.addEventListener('close',()=>openDialog.focus());
+</script>
+</body></html>
